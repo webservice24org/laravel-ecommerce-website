@@ -20,3 +20,8 @@ Route::get('/', function () {
 
 Route::post('/user-registration', [UserController::class, 'UserRegistration']);
 Route::post('/user-login', [UserController::class, 'UserLogin']);
+Route::post('/send-otp', [UserController::class,'sendOtoMail']);
+Route::post('/verify-otp', [UserController::class,'verifyOtp']);
+
+
+Route::view('/otp', 'mail.otpmail');
