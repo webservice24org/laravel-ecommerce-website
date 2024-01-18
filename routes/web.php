@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\TokenVerificationMiddleWare;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::post('/user-registration', [UserController::class, 'UserRegistration']);
 Route::post('/user-login', [UserController::class, 'UserLogin']);
 Route::post('/send-otp', [UserController::class,'sendOtoMail']);
 Route::post('/verify-otp', [UserController::class,'verifyOtp']);
+Route::post('/reset-password', [UserController::class,'resetPassword'])->middleware([TokenVerificationMiddleWare::class]);
 
+Route::view('/dashboard', 'backend/index');
 
-Route::view('/otp', 'mail.otpmail');
